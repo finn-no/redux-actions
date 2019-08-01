@@ -1,8 +1,6 @@
-# FINN.no Redux Actions
+# Redux Actions [![Build Status](https://travis-ci.org/finn-no/redux-actions.svg?branch=master)](https://travis-ci.org/finn-no/redux-actions)
 
-FINN.no Redux Actions is a tiny library designed to help write action creators and reducers for Redux with less boilerplate.
-The library is fully tested, has no external dependencies, and weighs in at less than 2 KB uncompressed. It's published in both CommonJS and
-ESM format, and comes with Typescript definitions.
+Redux Actions is a tiny library designed to help write action creators and reducers for Redux with less boilerplate. The library is fully tested, has no external dependencies, and weighs in at less than 2 KB uncompressed. It's published in both CommonJS and ESM format, and comes with Typescript definitions.
 
 # Getting started
 
