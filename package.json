@@ -26,7 +26,8 @@
     "coverage": "jest --coverage",
     "build": "yarn test && yarn clean && yarn build:js && yarn build:types",
     "build:types": "tsc --emitDeclarationOnly",
-    "build:js": "rollup -c"
+    "build:js": "rollup -c",
+    "prepublishOnly": "yarn build"
   },
   "repository": {
     "type": "git",
