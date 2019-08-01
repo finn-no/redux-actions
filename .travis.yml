@@ -1,0 +1,3 @@
+language: node_cs
+node_cs:
+  - "stable"
