@@ -1,6 +1,6 @@
 {
   "name": "@finn-no/redux-actions",
-  "version": "1.0.0-rc",
+  "version": "1.0.0-rc.1",
   "description": "Write actions and reducers for Redux with less boilerplate",
   "repository": {
     "type": "git",
