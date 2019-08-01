@@ -1,0 +1,50 @@
+{
+  "name": "@finn-no/redux-actions",
+  "version": "1.0.0-rc.1",
+  "description": "Write actions and reducers for Redux with less boilerplate",
+  "repository": {
+    "type": "git",
+    "url": "finn-no/redux-actions"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "scripts": {
+    "test": "jest",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "yarn type-check --watch",
+    "clean": "rm -rf dist/ coverage/",
+    "coverage": "jest --coverage",
+    "build": "yarn test && yarn clean && yarn build:js && yarn build:types",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:js": "rollup -c"
+  },
+  "keywords": [
+    "finn",
+    "react",
+    "redux",
+    "typescript"
+  ],
+  "author": "Nicolay Ramm <nicolay.ramm@finn.no> (https://www.finn.no)",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "deep-freeze": "^0.0.1",
+    "jest": "^24.8.0",
+    "rollup": "^1.16.3",
+    "rollup-plugin-terser": "^5.0.0",
+    "rollup-plugin-typescript": "^1.0.1",
+    "ts-node": "^8.3.0",
+    "tslib": "^1.10.0",
+    "typescript": "^3.4.3"
+  },
+  "directories": {
+    "lib": "dist",
+    "test": "src/__tests__"
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ]
+}

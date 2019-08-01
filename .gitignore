@@ -1,0 +1,9 @@
+.idea/
+node_modules/
+.vscode/
+.gradle/
+lib/
+dist/
+coverage/
+
+*.code-workspace
