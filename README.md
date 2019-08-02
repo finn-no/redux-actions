@@ -6,6 +6,7 @@ boilerplate.
 The library is fully tested, has no external dependencies, and weighs in at less than 2 KB
 uncompressed. It's published in both CommonJS and ESM format, and comes with Typescript definitions.
 
+
 # Getting started
 
 First, install the library using npm or yarn:
@@ -53,6 +54,7 @@ The default action creator accepts one optional argument, the value of which is 
 
 The `makeReducer(actions)` function takes one parameter: An object where the values are actions made
 with `makeAction`. It returns a reducer that handles all the provided actions.
+
 
 # Boilerplate reduction
 
@@ -112,7 +114,7 @@ export function reducer(state, action) {
 
 ## After
 
-With FINN.no Redux Actions, the definitions of action creators and reducers are kept together, and
+With Redux Actions, the definitions of action creators and reducers are kept together, and
 the need to define action types separately is eliminated:
 
 ```javascript
@@ -133,9 +135,10 @@ export default actions;
 export const reducer = makeReducer(actions);
 ```
 
+
 # About
 
-FINN.no Redux Actions has been in use in various apps within the travel vertical on FINN.no
-since 2017. The open source version was released in 2019 under the MIT license.
+Redux Actions has been in use in various apps within the travel vertical on FINN.no since
+2017. The open source version was released in 2019 under the MIT license.
 
 Copyright © 2019 Schibsted
