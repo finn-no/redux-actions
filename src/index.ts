@@ -125,7 +125,7 @@ export interface DecoratedActionCreator {
  * An object where the values are DecoratedActionCreator functions made with makeAction()
  */
 export interface ActionsObject {
-  readonly [actionName: string]: DecoratedActionCreator;
+  [actionName: string]: DecoratedActionCreator;
 }
 
 /**
