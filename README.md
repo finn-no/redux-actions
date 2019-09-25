@@ -135,7 +135,7 @@ export default actions;
 export const reducer = makeReducer(actions);
 ```
 
-## TypeScript
+# TypeScript
 
 Both `makeActions` and `makeReducer`, as well as several other type definitions in this package,
 are generic types that take one argument; a state type.
