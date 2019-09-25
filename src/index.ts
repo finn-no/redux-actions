@@ -24,29 +24,29 @@
  * @return {Function} An action creation function
  * @see {@link makeReducer}
  */
-export function makeAction(
+export function makeAction<S = ReduxState>(
   type: string,
-  reducer: string | ActionReducer,
+  reducer: string | ActionReducer<S>,
   creator?: ActionCreator
-): DecoratedActionCreator {
+): DecoratedActionCreator<S> {
   if (type === undefined || reducer === undefined) {
     throw new Error("makeAction requires a type and a reducer");
   }
 
-  const reducerFn: ActionReducer =
-    typeof reducer === "string" ? defaultReducer.bind(null, type, reducer) : reducer;
+  const reducerFn: ActionReducer<S> =
+    typeof reducer === "string" ? defaultReducer.bind(null, type, reducer) as ActionReducer<S> : reducer;
   const creatorFn: ActionCreator =
     typeof creator === "function" ? creator : defaultCreator.bind(null, type);
 
   return Object.assign(creatorFn.bind(null), { type, reducer: reducerFn });
 }
 
-function defaultReducer(
+function defaultReducer<S = ReduxState>(
   type: string,
   field: string,
-  state: ReduxState,
+  state: S,
   action: ReduxAction
-): ReduxState {
+): S {
   if (action.type === type) {
     return {
       ...state,
@@ -70,16 +70,16 @@ function defaultCreator(type: string, payload: ActionPayload): ReduxAction {
  * @returns {ReduxReducer}
  * @see {@link makeAction}
  */
-export function makeReducer(actions: ActionsObject): ReduxReducer {
+export function makeReducer<S = ReduxState>(actions: ActionsObject<S>): ReduxReducer<S> {
   if (typeof actions !== "object") {
     throw new Error("Failed to make reducer: No actions specified");
   }
 
-  const reducerActions: CombinedReducerActions = Object.keys(actions)
+  const reducerActions: CombinedReducerActions<S> = Object.keys(actions)
     .filter(name => !!actions[name].reducer && !!actions[name].type)
     .reduce((last, name) => ({ ...last, [name]: actions[name] }), {});
 
-  function reducer(state: ReduxState, action: ReduxAction): ReduxState {
+  function reducer(state: S, action: ReduxAction): S {
     if (!state || typeof state !== "object") {
       throw new Error("Failed to execute reducer: Missing state");
     } else if (!action || typeof action !== "object" || !action.type) {
@@ -115,24 +115,24 @@ export interface ActionCreator {
 /**
  * An action creator function with two additional properties attached: `type`, and `reducer`.
  */
-export interface DecoratedActionCreator {
+export interface DecoratedActionCreator<S> {
   (payload?: any): ReduxAction;
   type: string;
-  reducer: ActionReducer;
+  reducer: ActionReducer<S>;
 }
 
 /**
  * An object where the values are DecoratedActionCreator functions made with makeAction()
  */
-export interface ActionsObject {
-  [actionName: string]: DecoratedActionCreator;
+export interface ActionsObject<S = ReduxState> {
+  [actionName: string]: DecoratedActionCreator<S>;
 }
 
 /**
  * A Redux reducer function which takes a state and an action, and returns a new state.
  */
-export interface ActionReducer {
-  (state: ReduxState, action: ReduxAction): ReduxState;
+export interface ActionReducer<S> {
+  (state: S, action: ReduxAction): S;
 }
 
 export type ActionPayload = string | number | boolean;
@@ -146,10 +146,10 @@ export interface ReduxAction {
   readonly payload?: any;
 }
 
-export interface ReduxReducer {
-  (state: ReduxState, action: ReduxAction): ReduxState;
+export interface ReduxReducer<S> {
+  (state: S, action: ReduxAction): S;
 }
 
-export interface CombinedReducerActions {
-  readonly [actionName: string]: DecoratedActionCreator;
+export interface CombinedReducerActions<S> {
+  readonly [actionName: string]: DecoratedActionCreator<S>;
 }

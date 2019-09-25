@@ -135,10 +135,29 @@ export default actions;
 export const reducer = makeReducer(actions);
 ```
 
+## TypeScript
+
+Both `makeActions` and `makeReducer`, as well as several other type definitions in this package,
+are generic types that take one argument; a state type.
+
+```typescript
+import { makeAction, makeReducer, ActionsObject } from "@finn-no/redux-actions";
+
+interface MyState {
+    my_value: string;
+}
+
+const actions: ActionsObject<MyState> = {};
+
+actions.myAction = makeAction<MyState>("MY_ACTION", "my_value");
+
+export default actions;
+export const reducer = makeReducer<MyState>(actions);
+```
 
 # About
 
-Redux Actions has been in use in various apps within the travel vertical on FINN.no since
-2017. The open source version was released in 2019 under the MIT license.
+Redux Actions has been in use in various apps within the travel vertical on FINN.no since 2017.
+The open source version was released in 2019 under the MIT license.
 
 Copyright © 2019 Schibsted
