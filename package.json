@@ -9,11 +9,11 @@
     "@babel/core": "^7.0.0-0",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-typescript": "^7.3.3",
+    "@rollup/plugin-typescript": "^2.0.2",
     "deep-freeze": "^0.0.1",
     "jest": "^24.8.0",
     "rollup": "^1.16.3",
     "rollup-plugin-terser": "^5.0.0",
-    "rollup-plugin-typescript": "^1.0.1",
     "ts-node": "^8.3.0",
     "tslib": "^1.10.0",
     "typescript": "^3.4.3"
